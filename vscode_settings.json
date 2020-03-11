@@ -1,0 +1,20 @@
+{
+  "workbench.colorTheme": "Monokai Night",
+  "workbench.iconTheme": "material-icon-theme",
+  "eslint.codeActionsOnSave.mode": "problems",
+  "eslint.lintTask.enable": true,
+  "editor.fontSize": 14,
+  "workbench.startupEditor": "newUntitledFile",
+  "window.zoomLevel": 1,
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "editor.minimap.maxColumn": 80,
+  "workbench.tree.renderIndentGuides": "always",
+  "editor.renderIndentGuides": true,
+  "editor.tabSize": 4,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false,
+  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
+  "editor.find.addExtraSpaceOnTop": false,
+  "eslint.format.enable": true
+}
