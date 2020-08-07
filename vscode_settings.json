@@ -1,20 +1,30 @@
 {
-  "workbench.colorTheme": "Monokai Night",
-  "workbench.iconTheme": "material-icon-theme",
-  "eslint.codeActionsOnSave.mode": "problems",
-  "eslint.lintTask.enable": true,
-  "editor.fontSize": 14,
   "workbench.startupEditor": "newUntitledFile",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Monokai Night",
+  "editor.fontFamily": "'Victor Mono', Menlo, Monaco, 'Courier New', monospace",
   "window.zoomLevel": 1,
-  "editor.wordWrap": "on",
-  "editor.formatOnSave": true,
-  "editor.minimap.maxColumn": 80,
-  "workbench.tree.renderIndentGuides": "always",
-  "editor.renderIndentGuides": true,
-  "editor.tabSize": 4,
-  "editor.insertSpaces": false,
-  "editor.detectIndentation": false,
-  "editor.fontFamily": "JetBrains Mono, Menlo, Monaco, 'Courier New', monospace",
-  "editor.find.addExtraSpaceOnTop": false,
-  "eslint.format.enable": true
+  "editor.fontLigatures": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "eslint.format.enable": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.wordWrap": "wordWrapColumn",
+  "javascript.validate.enable": false,
+  "extensions.ignoreRecommendations": false,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
