@@ -6,6 +6,8 @@ set showcmd
 set ruler
 set encoding=utf-8
 set showmatch
+set colorcolumn=100
+set cmdheight=1
 set sw=2
 set relativenumber
 set laststatus=2
@@ -25,27 +27,42 @@ Plug 'jparise/vim-graphql'
 Plug 'cakebaker/scss-syntax.vim'
 
 " IDE
-Plug 'easymotion/vim-easymotion'
+" ### Nerdtree ###
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+" ### Nerdtree git ###
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
+" ###
+Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" ### Search and auto complete ###
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-emmet'
+" ### Telescope. New Fancy fzf ###
+"Plug 'nvim-lua/popup.nvim'
+"Plug 'nvim-lua/plenary.nvim'
+"Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" Therminal
+Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
 let mapleader=" "
 
 " Theme config
+set background=dark
 let g:vim_monokai_tasty_italic = 1
 colorscheme vim-monokai-tasty
+highlight Normal guibg=none
 
 " COC configuration
 let g:coc_global_extensions = [
@@ -66,16 +83,16 @@ nmap <F2> <Plug>(coc-rename)
 nmap <Leader>s <Plug>(easymotion-s2)
 
 " Nerdtree
-vmap ++ <plug>NERDCommenterToggle
-nmap ++ <plug>NERDCommenterToggle
-nmap +- :NERDTreeToggle<CR>
+vmap <C-l> <plug>NERDCommenterToggle
+nmap <C-l> <plug>NERDCommenterToggle
+nmap <C-b> :NERDTreeToggle<CR>
 " to open the menu in nerdtreee press `m`
 let NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeGitStatusWithFlags = 1
 
 " ctrlp ignore all git ignored files
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Airline theme
 let g:airline_theme='minimalist'
