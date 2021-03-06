@@ -35,11 +35,13 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
-" ###
+" ### Theme for the window
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" ### Nrdtree commenter ###
+Plug 'preservim/nerdcommenter'
 " ### Search and auto complete ###
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -74,6 +76,8 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ ]
 
+set autoindent
+
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " Remap for rename current word
@@ -83,8 +87,8 @@ nmap <F2> <Plug>(coc-rename)
 nmap <Leader>s <Plug>(easymotion-s2)
 
 " Nerdtree
-vmap <C-l> <plug>NERDCommenterToggle
-nmap <C-l> <plug>NERDCommenterToggle
+nnoremap ,c :call NERDComment(0,"toggle")<CR>
+vnoremap ,c :call NERDComment(0,"toggle")<CR>
 nmap <C-b> :NERDTreeToggle<CR>
 " to open the menu in nerdtreee press `m`
 let NERDTreeQuitOnOpen=1
