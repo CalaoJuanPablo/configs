@@ -1,16 +1,29 @@
 set mouse=a
 set numberwidth=1
 set clipboard=unnamed
-syntax enable
+syntax on
 set showcmd
 set ruler
 set encoding=utf-8
 set showmatch
-set colorcolumn=100
 set cmdheight=1
+set tabstop=2 softtabstop=4
 set sw=2
+set shiftwidth=2
+set expandtab
+set autoindent
+set smartindent
+set smartcase
 set relativenumber
+set nu
+set nohlsearch
 set laststatus=2
+set hidden
+set noerrorbells
+set incsearch
+set scrolloff=8
+set signcolumn=yes
+set colorcolumn=80
 "set noshowmode
 
 call plug#begin('~/.vim/plugged')
@@ -30,16 +43,17 @@ Plug 'cakebaker/scss-syntax.vim'
 " ### Nerdtree ###
 Plug 'scrooloose/nerdtree'
 " ### Nerdtree git ###
-"Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
+Plug 'preservim/nerdcommenter'
 " ### Theme for the window
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'dense-analysis/ale'
 " ### Nrdtree commenter ###
 Plug 'preservim/nerdcommenter'
 " ### Search and auto complete ###
@@ -76,7 +90,10 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ ]
 
-set autoindent
+"Function that returns the current git branch
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
 
 " prettier command for coc
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -86,24 +103,70 @@ nmap <F2> <Plug>(coc-rename)
 " Easymotion config
 nmap <Leader>s <Plug>(easymotion-s2)
 
+"Coc.vim configuration
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+"end of coc.vim config
+
 " Nerdtree
-nnoremap ,c :call NERDComment(0,"toggle")<CR>
-vnoremap ,c :call NERDComment(0,"toggle")<CR>
-nmap <C-b> :NERDTreeToggle<CR>
+nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
+vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
+nnoremap <leader>b :NERDTreeToggle<CR>
+vnoremap <leader>b :NERDTreeToggle<CR>
+
 " to open the menu in nerdtreee press `m`
-let NERDTreeQuitOnOpen=1
+"let NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeGitStatusWithFlags = 1
+
+"Open NerdTree when i open a folder
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+"Close vim if the only window left its filetree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ctrlp ignore all git ignored files
 "let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " Airline theme
 let g:airline_theme='minimalist'
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 let g:airline_powerline_fonts=1
+let g:airline_section_b='%{GitBranch()}'
+let NERDTreeShowHidden=1
+
+map <ScrollWheelDown> j
+map <ScrollWheelUp> k
+
+" fzf config
+nmap <C-P> :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \}
 
 " Custom keymaps
-nmap <C-q> :q<CR>
 nmap <Leader>gs :CocSearch
 nmap <C-s> :%s/
 
@@ -122,3 +185,4 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
