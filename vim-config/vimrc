@@ -30,6 +30,8 @@ call plug#begin('~/.vim/plugged')
 
 " Themes and syntax
 Plug 'patstockwell/vim-monokai-tasty'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'joshdick/onedark.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
@@ -44,16 +46,16 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'scrooloose/nerdtree'
 " ### Nerdtree git ###
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'zivyangll/git-blame.vim'
+Plug 'airblade/vim-gitgutter'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'ryanoasis/vim-devicons'
-Plug 'airblade/vim-gitgutter'
 Plug 'preservim/nerdcommenter'
 " ### Theme for the window
 Plug 'easymotion/vim-easymotion'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'dense-analysis/ale'
 " ### Nrdtree commenter ###
 Plug 'preservim/nerdcommenter'
 " ### Search and auto complete ###
@@ -67,7 +69,7 @@ Plug 'neoclide/coc-emmet'
 "Plug 'nvim-telescope/telescope.nvim'
 "Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
-" Therminal
+" Terminal
 Plug 'voldikss/vim-floaterm'
 
 call plug#end()
@@ -76,9 +78,14 @@ let mapleader=" "
 
 " Theme config
 set background=dark
-let g:vim_monokai_tasty_italic = 1
-colorscheme vim-monokai-tasty
+set t_Co=256
+colorscheme onedark
 highlight Normal guibg=none
+
+" Airline theme
+let g:airline_theme='onedark'
+let g:airline_powerline_fonts=1
+let g:airline_section_b='%{GitBranch()}'
 
 " COC configuration
 let g:coc_global_extensions = [
@@ -136,6 +143,25 @@ vnoremap <leader>b :NERDTreeToggle<CR>
 "let NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeGitStatusWithFlags = 1
+let NERDTreeShowHidden=1
+
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
+
+" Highlight currently open buffer in NERDTree
+autocmd BufEnter * call SyncTree()
 
 "Open NerdTree when i open a folder
 autocmd StdinReadPre * let s:std_in=1
@@ -144,22 +170,11 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 "Close vim if the only window left its filetree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" ctrlp ignore all git ignored files
-"let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-" Airline theme
-let g:airline_theme='minimalist'
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-let g:airline_powerline_fonts=1
-let g:airline_section_b='%{GitBranch()}'
-let NERDTreeShowHidden=1
-
 map <ScrollWheelDown> j
 map <ScrollWheelUp> k
 
 " fzf config
-nmap <C-P> :FZF<CR>
+nmap <C-P> :GFiles<CR>
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-s': 'split',
@@ -168,7 +183,7 @@ let g:fzf_action = {
 
 " Custom keymaps
 nmap <Leader>gs :CocSearch
-nmap <C-s> :%s/
+"nmap <C-s> :%s/
 
 " GoTo Code Navigation
 nmap <silent> gd <Plug>(coc-definition)
