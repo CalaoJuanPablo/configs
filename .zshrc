@@ -120,3 +120,4 @@ function open-nvim {
     nvim $1
   fi
 }
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

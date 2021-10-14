@@ -24,50 +24,43 @@ set incsearch
 set scrolloff=8
 set signcolumn=yes
 set colorcolumn=80
-"set noshowmode
+set noshowmode
 
 call plug#begin('~/.vim/plugged')
 
-" Themes and syntax
-Plug 'patstockwell/vim-monokai-tasty'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'joshdick/onedark.vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'styled-components/vim-styled-components'
-Plug 'elzr/vim-json'
-Plug 'jparise/vim-graphql'
-Plug 'cakebaker/scss-syntax.vim'
+" Syntax
+Plug 'sheerun/vim-polyglot'
 
-" IDE
-" ### Nerdtree ###
-Plug 'scrooloose/nerdtree'
-" ### Nerdtree git ###
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'zivyangll/git-blame.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
-Plug 'preservim/nerdcommenter'
-" ### Theme for the window
-Plug 'easymotion/vim-easymotion'
-Plug 'christoomey/vim-tmux-navigator'
+" Themes
+Plug 'navarasu/onedark.nvim'
+
+" Status Bar
+Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" ### Nrdtree commenter ###
-Plug 'preservim/nerdcommenter'
-" ### Search and auto complete ###
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+
+" Tree
+Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+
+" Type
+Plug 'alvan/vim-closetag'
+
+" Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-emmet'
-" ### Telescope. New Fancy fzf ###
-"Plug 'nvim-lua/popup.nvim'
-"Plug 'nvim-lua/plenary.nvim'
-"Plug 'nvim-telescope/telescope.nvim'
-"Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
+" IDE
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
+
+" Git
+Plug 'mhinz/vim-signify'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'zivyangll/git-blame.vim'
 
 " Terminal
 Plug 'voldikss/vim-floaterm'
@@ -79,6 +72,7 @@ let mapleader=" "
 " Theme config
 set background=dark
 set t_Co=256
+let g:onedark_style = 'warmer'
 colorscheme onedark
 highlight Normal guibg=none
 
@@ -97,7 +91,7 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ ]
 
-"Function that returns the current git branch
+  "Function that returns the current git branch
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
@@ -200,4 +194,3 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
