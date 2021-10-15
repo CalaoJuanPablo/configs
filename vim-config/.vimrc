@@ -24,43 +24,49 @@ set incsearch
 set scrolloff=8
 set signcolumn=yes
 set colorcolumn=80
-set noshowmode
+"set noshowmode
 
 call plug#begin('~/.vim/plugged')
 
-" Syntax
-Plug 'sheerun/vim-polyglot'
-
-" Themes
-Plug 'navarasu/onedark.nvim'
-
-" Status Bar
-Plug 'itchyny/lightline.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" Tree
-Plug 'scrooloose/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'ryanoasis/vim-devicons'
-
-" Type
-Plug 'alvan/vim-closetag'
-
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-emmet'
+" Themes and syntax
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'joshdick/onedark.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'styled-components/vim-styled-components'
+Plug 'elzr/vim-json'
+Plug 'jparise/vim-graphql'
+Plug 'cakebaker/scss-syntax.vim'
 
 " IDE
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdcommenter'
-
-" Git
-Plug 'mhinz/vim-signify'
+" ### Nerdtree ###
+Plug 'scrooloose/nerdtree'
+" ### Nerdtree git ###
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'zivyangll/git-blame.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdcommenter'
+" ### Theme for the window
+Plug 'easymotion/vim-easymotion'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" ### Nrdtree commenter ###
+Plug 'scrooloose/nerdcommenter'
+" ### Search and auto complete ###
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-emmet'
+" ### Telescope. New Fancy fzf ###
+"Plug 'nvim-lua/popup.nvim'
+"Plug 'nvim-lua/plenary.nvim'
+"Plug 'nvim-telescope/telescope.nvim'
+"Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Terminal
 Plug 'voldikss/vim-floaterm'
@@ -70,10 +76,9 @@ call plug#end()
 let mapleader=" "
 
 " Theme config
-set background=dark
 set t_Co=256
-let g:onedark_style = 'warmer'
 colorscheme onedark
+let g:onedark_style = 'darker'
 highlight Normal guibg=none
 
 " Airline theme
@@ -91,7 +96,7 @@ let g:coc_global_extensions = [
   \ 'coc-json', 
   \ ]
 
-  "Function that returns the current git branch
+"Function that returns the current git branch
 function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
@@ -132,6 +137,11 @@ nnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 vnoremap <leader>/ :call NERDComment(0,"toggle")<CR>
 nnoremap <leader>b :NERDTreeToggle<CR>
 vnoremap <leader>b :NERDTreeToggle<CR>
+
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
 
 " to open the menu in nerdtreee press `m`
 "let NERDTreeQuitOnOpen=1
