@@ -4,9 +4,8 @@
     "javascript",
     "typescript",
     "typescriptreact",
-    "json",
     "javascriptreact",
-    "typescript.tsx",
+    "json",
     "graphql"
   ],
   "prettier.semi": false,
