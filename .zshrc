@@ -100,7 +100,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# aliases
 alias v=open-nvim
+alias gohome='cd ~'
 
 # NVM Config
 export NVM_DIR="$HOME/.nvm"
@@ -110,8 +112,6 @@ export NVM_DIR="$HOME/.nvm"
 # Walmart aliases
 alias wm-pci="nvm use && pnpm i && NODE_EXTRA_CA_CERTS='/tmp/mega.pem'  pnpm run nx serve pci-app -- --https=true --skip-nx-cache"
 alias wm-journey="nvm use && pnpm i &&  pnpm run nx serve journey-app -- --https=true --skip-nx-cache"
-
-
 
 function open-nvim {
   if [ $# -eq 0 ]; then
