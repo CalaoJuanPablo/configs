@@ -39,7 +39,8 @@ Plug 'styled-components/vim-styled-components'
 Plug 'elzr/vim-json'
 Plug 'jparise/vim-graphql'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'davidhalter/jedi-vim'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'vim-scripts/indentpython.vim'
 
 " IDE
 " ### Nerdtree ###
@@ -63,6 +64,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-emmet'
+
+" Extra features
+" Plug 'majutsushi/tagbar'   " Classes on a side bar
+
 " ### Telescope. New Fancy fzf ###
 "Plug 'nvim-lua/popup.nvim'
 "Plug 'nvim-lua/plenary.nvim'
