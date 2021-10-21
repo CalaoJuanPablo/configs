@@ -39,6 +39,7 @@ Plug 'styled-components/vim-styled-components'
 Plug 'elzr/vim-json'
 Plug 'jparise/vim-graphql'
 Plug 'cakebaker/scss-syntax.vim'
+Plug 'davidhalter/jedi-vim'
 
 " IDE
 " ### Nerdtree ###
