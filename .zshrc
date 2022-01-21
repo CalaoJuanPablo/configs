@@ -110,6 +110,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # Walmart aliases
+alias gowal="cd ~/development/walmart && nvm use"
 alias wm-pci="nvm use && pnpm i && NODE_EXTRA_CA_CERTS='/tmp/mega.pem'  pnpm run nx serve pci-app -- --https=true --skip-nx-cache"
 alias wm-journey="nvm use && pnpm i &&  pnpm run nx serve journey-app -- --https=true --skip-nx-cache"
 

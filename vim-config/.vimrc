@@ -63,7 +63,9 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-prettier'
 Plug 'neoclide/coc-emmet'
+Plug 'editorconfig/editorconfig-vim'
 
 " Extra features
 " Plug 'majutsushi/tagbar'   " Classes on a side bar
