@@ -111,9 +111,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # Walmart aliases
 alias gowal="cd ~/development/walmart && nvm use"
-alias wm-pci="nvm use && NODE_EXTRA_CA_CERTS='/tmp/mega.pem'  pnpm run nx serve pci-app -- --https=true --skip-nx-cache"
+alias wm-pci="nvm use && pnpm run nx serve pci-app -- --https=true --skip-nx-cache"
 alias wm-journey="nvm use &&  pnpm run nx serve journey-app -- --https=true --skip-nx-cache"
 alias rm-nxt="rm -rf ./apps/journey/app/.next"
+
+export NODE_EXTRA_CA_CERTS="/tmp/mega.pem"
+if [ ! -f $NODE_EXTRA_CA_CERTS ]; then
+  security find-certificate -a -p /Library/Keychains/System.keychain > $NODE_EXTRA_CA_CERTS
+fi
 
 function open-nvim {
   if [ $# -eq 0 ]; then
