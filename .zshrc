@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/juancalao/.oh-my-zsh"
+export ZSH="/Users/CalaoJuanPablo/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -103,6 +103,9 @@ source $ZSH/oh-my-zsh.sh
 # aliases
 alias v=open-nvim
 alias gohome='cd ~'
+
+# Homebrew config
+eval $(/opt/homebrew/bin/brew shellenv)
 
 # NVM Config
 export NVM_DIR="$HOME/.nvm"
