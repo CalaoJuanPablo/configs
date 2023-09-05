@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/CalaoJuanPablo/.oh-my-zsh"
+export ZSH='$HOME/.oh-my-zsh'
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -103,6 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # aliases
 alias v=open-nvim
 alias gohome='cd ~'
+alias godev='cd ~/development'
 
 # Homebrew config
 eval $(/opt/homebrew/bin/brew shellenv)
@@ -113,9 +114,9 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Walmart aliases
-alias gowal="cd ~/development/walmart && nvm use"
-alias wm-pci="nvm use && pnpm run nx serve pci-app -- --https=true --skip-nx-cache"
-alias wm-journey="nvm use &&  pnpm run nx serve journey-app -- --https=true --skip-nx-cache"
+alias gowal="cd $HOME/development/walmart && nvm use"
+alias wm-pci="nvm use && pnpm run nx serve pci-app -- --https=true"
+alias wm-journey="nvm use &&  pnpm run nx serve journey-app -- --https=true"
 alias rm-nxt="rm -rf ./apps/journey/app/.next"
 
 export NODE_EXTRA_CA_CERTS="/tmp/mega.pem"
@@ -132,3 +133,9 @@ function open-nvim {
 }
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# pnpm
+# export PNPM_HOME="/Users/calaojuanpablo/Library/pnpm"
+# export PATH="$PNPM_HOME:$PATH"
+# pnpm end
