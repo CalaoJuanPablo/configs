@@ -1,64 +1,178 @@
 {
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "One Dark Theme",
-    "editor.fontFamily": "'Cascadia Code', Menlo, Monaco, 'Courier New', monospace",
-    "git.mergeEditor": false,
-    "editor.fontSize": 17,
-    "editor.fontLigatures": true,
-    "liveServer.settings.donotShowInfoMsg": true,
-    "security.workspace.trust.untrustedFiles": "open",
-    "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true,
-    },
-    "[javascriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true,
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true,
-    },
-    "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true,
-    },
-    "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true,
-      "editor.tabSize": 2
-    },
-    "[scss]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode",
-      "editor.formatOnSave": true,
-      "editor.tabSize": 2
-    },
-    "eslint.format.enable": true,
-    "emmet.includeLanguages": {
-      "javascript": "javascriptreact"
-    },
-    "editor.wordWrap": "wordWrapColumn",
-    "javascript.validate.enable": false,
-    "extensions.ignoreRecommendations": true,
-    "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "prettier.semi": false,
-    "prettier.singleQuote": true,
-    "prettier.jsxSingleQuote": true,
-    "prettier.trailingComma": "none",
-    "prettier.arrowParens": "avoid",
-    "vim.useSystemClipboard": true,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "files.exclude": {
-      "**/.classpath": true,
-      "**/.project": true,
-      "**/.settings": true,
-      "**/.factorypath": true
-    },
-    "[html]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
-  }
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "telemetry.telemetryLevel": "off",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "'VictorMono Nerd Font', Menlo, Monaco, 'Courier New', monospace",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "emphasis",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "strong",
+        "settings": {
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "entity.other.attribute-name",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "markup.underline",
+        "settings": {
+          "fontStyle": "underline"
+        }
+      },
+      {
+        "scope": "markup.bold",
+        "settings": {
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "markup.heading",
+        "settings": {
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "markup.italic",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "storage.type",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "storage.modifier",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "String interpolation",
+        "scope": [
+          "punctuation.definition.template-expression.begin",
+          "punctuation.definition.template-expression.end",
+          "punctuation.section.embedded"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "keyword.control",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          "keyword.operator.new",
+          "keyword.operator.expression",
+          "keyword.operator.cast",
+          "keyword.operator.sizeof",
+          "keyword.operator.logical.python"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "this.self",
+        "scope": "variable.language",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#ff5874"
+        }
+      },
+      {
+        "name": "@Decorator",
+        "scope": ["meta.decorator punctuation.decorator"],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": ["punctuation.definition.comment", "comment"],
+        "settings": {
+          "foreground": "#ff5874",
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
+  "git.mergeEditor": false,
+  "editor.fontSize": 17,
+  "editor.fontLigatures": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "eslint.format.enable": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.wordWrap": "wordWrapColumn",
+  "javascript.validate.enable": false,
+  "extensions.ignoreRecommendations": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.trailingComma": "none",
+  "prettier.arrowParens": "avoid",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Atom One Dark",
+  "window.autoDetectColorScheme": true,
+  "workbench.preferredDarkColorTheme": "Atom One Dark",
+  "workbench.preferredLightColorTheme": "Atom One Light",
+  "security.promptForLocalFileProtocolHandling": false
+}
