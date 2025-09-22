@@ -103,13 +103,6 @@
         "settings": {
           "fontStyle": "italic"
         }
-      },
-      {
-        "scope": ["punctuation.definition.comment", "comment"],
-        "settings": {
-          "foreground": "#ff5874",
-          "fontStyle": "italic"
-        }
       }
     ]
   },
