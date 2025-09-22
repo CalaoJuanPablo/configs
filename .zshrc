@@ -114,15 +114,15 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Walmart aliases
-alias gowal="cd $HOME/development/walmart && nvm use"
-alias wm-pci="nvm use && pnpm run nx serve pci-app -- --https=true"
-alias wm-journey="nvm use &&  pnpm run nx serve journey-app -- --https=true"
-alias rm-nxt="rm -rf ./apps/journey/app/.next"
+# alias gowal="cd $HOME/development/walmart && nvm use"
+# alias wm-pci="nvm use && pnpm run nx serve pci-app -- --https=true"
+# alias wm-journey="nvm use &&  pnpm run nx serve journey-app -- --https=true"
+# alias rm-nxt="rm -rf ./apps/journey/app/.next"
 
-export NODE_EXTRA_CA_CERTS="/tmp/mega.pem"
-if [ ! -f $NODE_EXTRA_CA_CERTS ]; then
-  security find-certificate -a -p /Library/Keychains/System.keychain > $NODE_EXTRA_CA_CERTS
-fi
+# export NODE_EXTRA_CA_CERTS="/tmp/mega.pem"
+# if [ ! -f $NODE_EXTRA_CA_CERTS ]; then
+#   security find-certificate -a -p /Library/Keychains/System.keychain > $NODE_EXTRA_CA_CERTS
+# fi
 
 function open-nvim {
   if [ $# -eq 0 ]; then
@@ -136,6 +136,6 @@ function open-nvim {
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 
 # pnpm
-# export PNPM_HOME="/Users/calaojuanpablo/Library/pnpm"
-# export PATH="$PNPM_HOME:$PATH"
+export PNPM_HOME="/Users/calaojuanpablo/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 # pnpm end
