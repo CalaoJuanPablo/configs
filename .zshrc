@@ -139,3 +139,5 @@ export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PNPM_HOME="/Users/calaojuanpablo/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+. "$HOME/.local/bin/env"
